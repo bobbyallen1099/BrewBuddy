@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Http;
 
 class PunkApiService
 {
-    protected string $api = 'https://api.punkapi.com/v2/';
-    protected int $perPage = 80;
+    public const API = 'https://api.punkapi.com/v2/';
+    public const PER_PAGE = 80;
 
     /**
      * Gets a page of brews from Punk API
@@ -17,8 +17,8 @@ class PunkApiService
      */
     public function getBrews($page = 1): array|null
     {
-        $response = Http::get($this->api.'beers/', [
-            'per_page' => $this->perPage,
+        $response = Http::get($this::API.'beers/', [
+            'per_page' => $this::PER_PAGE,
             'page' => $page
         ]);
         if ($response->successful()) {

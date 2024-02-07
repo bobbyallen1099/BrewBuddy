@@ -3,9 +3,9 @@
 @section('content')
     <div class="py-32 bg-indigo-700 font-sans">
         <div class="container mx-auto">
-            <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between">
-                <img src="{{$brew->image_url}}" class="max-w-30 max-h-60 p-4 bg-white rounded-lg shadow">
-                <div class="p-3">
+            <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-start">
+                <img src="{{$brew->image_url}}" class="h-80  p-4 px-36 bg-indigo-200 rounded-lg shadow-lg">
+                <div class="p-3 ml-4">
                     <div class="text-indigo-100 text-white font-semibold text-3xl">{{ $brew->name }}</div>
                     <div class="text-indigo-200 font-semibold text-xl">{{ $brew->tagline }}</div>
                     <div class="text-indigo-400 font-semibold text-md">{{ $brew->since }}</div>
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="mt-5 text-center">
+        <div class="my-5 text-center">
             <a class="px-4 py-3 rounded bg-gray-100 text-gray-800 font-semibold" href="{{route('home')}}">Go back</a>
         </div>
     </div>

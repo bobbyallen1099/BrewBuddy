@@ -25,15 +25,14 @@
             </div>
           </div>
         </div>
-        <div class="flex items-center justify-between bg-gray-800 rounded border shadow-lg py-5 px-4 mt-5">
-          <span class="text-3xl text-gray-300 font-semibold flex items-center"><span class="text-5xl">🍻</span> Why not try another page of brews?</span>
+        <div class="flex items-center justify-between bg-gray-800 rounded-lg border shadow-lg py-5 px-4 mt-5">
+          <span class="text-3xl text-gray-200 flex items-center"><span class="text-5xl mr-2">🍻</span> Want more brews?</span>
           <div class="flex items-center justify-center">
-            <div class="px-4 py-2 mx-1 bg-gray-100 border border-gray-500 text-gray-700 rounded-lg" @click="onBack" v-if="this.page !== 1">Back</div>
-            <div class="px-4 py-2 mx-1 bg-gray-100 border border-gray-500 text-gray-700 rounded-lg" @click="onNext" v-if="this.brews.length === 20">Next</div>
+            <div class="px-4 py-2 mx-1 bg-gray-200 border border-gray-500 text-gray-700 rounded-lg" @click="onBack" v-if="this.page !== 1">Back</div>
+            <div class="px-4 py-2 mx-1 bg-gray-200 border border-gray-500 text-gray-700 rounded-lg" @click="onNext" v-if="this.brews.length === 20">Next</div>
           </div>
         </div>
       </template>
-
       <template v-else>
         <div class="p-4 bg-white rounded mt-4">
           No brews found
