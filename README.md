@@ -11,7 +11,7 @@ BrewBuddy is your companion in navigating the diverse world of craft brews. Powe
 ## How to get it up & running
 Start off by pulling the code, you'll need to run the following
 - 🍺 `composer install`
-- 🍺 `npm run dev`
+- 🍺 `npm install && npm run dev`
 - 🍺 Setup Sail MySQL DB - `./vendor/bin/sail up`
 Head over to `localhost` with no ports!
 
