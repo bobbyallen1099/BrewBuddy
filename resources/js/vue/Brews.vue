@@ -15,7 +15,7 @@
         <button v-if="search" @click="onClear" class="text-gray-700 absolute end-24 bottom-2.5 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 hidden sm:block">Clear</button>
       </div>
 
-      <template v-if="this.brews">
+      <template v-if="this.brews.length">
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
           <div v-for="brew in brews" :key="brew.id" class="p-4 transition-shadow rounded-lg bg-white shadow hover:shadow-lg border flex flex-col items-center cursor-pointer" @click="onBrew(brew.id)">
             <img :src=brew.image_url class="max-w-24 max-h-56 mb-2"/>
@@ -25,7 +25,7 @@
             </div>
           </div>
         </div>
-        <div class="flex items-center justify-between bg-gray-800 rounded-lg border shadow-lg py-5 px-4 mt-5">
+        <div class="flex items-center justify-between bg-gray-800 rounded-lg border shadow-lg py-5 px-4 mt-5" v-if="this.page !== 1 || this.brews.length === 20">
           <span class="text-3xl text-gray-200 flex items-center"><span class="text-5xl mr-2">🍻</span> Want more brews?</span>
           <div class="flex items-center justify-center">
             <div class="px-4 py-2 mx-1 bg-gray-200 border border-gray-500 text-gray-700 rounded-lg" @click="onBack" v-if="this.page !== 1">Back</div>
