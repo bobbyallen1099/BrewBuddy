@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Brews from "./layout/Brews.vue";
+import Brews from "./Brews.vue";
 export default {
   name: "App",
   components: {
