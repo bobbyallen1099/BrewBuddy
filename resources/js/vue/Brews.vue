@@ -1,7 +1,9 @@
 <template>
   <div>
     <template v-if="loading">
-      Loading
+      <div class="py-4 text-center bg-white rounded-lg shadow">
+        Getting Brews... 🍺
+      </div>
     </template>
     <template v-else>
       <div class="relative">
@@ -10,7 +12,7 @@
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
           </svg>
         </div>
-        <input v-model="search" class="block w-full p-4 ps-10 text-sm text-indigo-900 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search Brew Names" required>
+        <input v-model="search" @keyup.enter="onSearch" class="block w-full p-4 ps-10 text-sm text-indigo-900 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search Brew Names">
         <button @click="onSearch" class="text-white absolute end-2.5 bottom-2.5 bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
         <button v-if="search" @click="onClear" class="text-gray-700 absolute end-24 bottom-2.5 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 hidden sm:block">Clear</button>
       </div>
@@ -25,7 +27,7 @@
             </div>
           </div>
         </div>
-        <div class="flex items-center justify-between bg-gray-800 rounded-lg border shadow-lg py-5 px-4 mt-5" v-if="this.page !== 1 || this.brews.length === 20">
+        <div class="flex items-center justify-between bg-indigo-700 rounded-lg border shadow-lg py-5 px-4 mt-5" v-if="this.page !== 1 || this.brews.length === 20">
           <span class="text-3xl text-gray-200 flex items-center"><span class="text-5xl mr-2">🍻</span> Want more brews?</span>
           <div class="flex items-center justify-center">
             <div class="px-4 py-2 mx-1 bg-gray-200 border border-gray-500 text-gray-700 rounded-lg" @click="onBack" v-if="this.page !== 1">Back</div>
@@ -58,15 +60,17 @@ export default {
   methods: {
     fetchBrews(){
       this.loading = true;
-      axios.post('/api/brews', {
-        search: this.search,
-        page: this.page
-      }).then(response => {
-        this.brews = JSON.parse(response.data.brews ?? '') ?? null;
-        this.total = response.data.total ?? 325;
-        this.loading = false;
-        console.log(this.brews.length )
-      })
+      axios
+        .post('/api/brews', {
+          search: this.search,
+          page: this.page
+        })
+        .catch(error => console.log(error))
+        .then(response => {
+          this.brews = JSON.parse(response.data.brews ?? '') ?? null;
+          this.total = response.data.total ?? 325;
+          this.loading = false;
+        })
     },
     onSearch() {
       this.page = 1;
@@ -86,8 +90,7 @@ export default {
     },
     onBrew(id) {
       window.location.href = '/brew/'+id;
-    }
-
+    },
   },
   mounted() {
     this.fetchBrews();
