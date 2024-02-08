@@ -9,11 +9,13 @@ BrewBuddy is your companion in navigating the diverse world of craft brews. Powe
 - 🍺 Crafted with Laravel, Vue.js, and Punk API.
 
 ## How to get it up & running
-Start off by pulling the code, you'll need to run the following
-- 🍺 `composer install`
-- 🍺 `npm install && npm run build`
-- 🍺 Setup Sail MySQL DB - `./vendor/bin/sail up` & then `./vendor/bin/sail artisan migrate`
-Head over to `localhost` with no ports!
+- 🍺 Start off by pulling the code, You will then need to change the `.envexample` to `.env`.
+- 🍺 `composer install`.
+- 🍺 `php artisan key:generate`.
+- 🍺 `npm install && npm run build`.
+- 🍺 Setup Sail MySQL DB - `./vendor/bin/sail up` & in another command tab use `./vendor/bin/sail artisan migrate`.
+- 🍺 Now lets get the API data lets run `./vendor/bin/sail artisan api:fetch`
+- 🍺 Done! 🍻 Let's Head over to `localhost` with no ports!
 
 ## How to run Unit Test
 - 🍺 `./vendor/bin/sail test`

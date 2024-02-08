@@ -1,6 +1,6 @@
 APP_NAME=BrewBuddy
 APP_ENV=local
-APP_KEY=base64:J4636El6B4n0TZ3GY8QZV012apdN2pW9ato58uTC87k=
+APP_KEY=
 APP_DEBUG=true
 APP_URL=localhost
 
